@@ -3,20 +3,7 @@ import data from "./data"; // Import the data from the data.js file
 import './App.css';
 import './components/Component.css';
 import Component from './components/Component';
-import { galleryImages } from "./data";
-import { uitImages } from "./data";
-import { parkImages } from "./data";
-import { udaipurImages } from "./data";
-import { jalImages } from "./data";
-import { campImages } from "./data";
-import { helpImages } from "./data";
-import { functionImages } from "./data";
-import { communityImages } from "./data";
-import { placeImages } from "./data";
-import { foundationImages } from "./data";
-import { supportImages } from "./data";
-import { surgicalImages } from "./data";
-import { festivalImages } from "./data";
+import { galleryImages,uitImages,udaipurImages, festivalImages , parkImages, surgicalImages, foundationImages,supportImages,  jalImages,placeImages, campImages, helpImages,functionImages,communityImages  } from "./data";
 import logo from '../src/logo.webp';
 import udaipur from '../src/sheisudaipur.webp';
 
