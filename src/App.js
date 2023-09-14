@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import data from "./data"; // Import the data from the data.js file
 import './App.css';
 import './components/Component.css';
 import Component from './components/Component';
-import { galleryImages,uitImages,udaipurImages, festivalImages , parkImages, surgicalImages, foundationImages,supportImages,  jalImages,placeImages, campImages, helpImages,functionImages,communityImages  } from "./data";
+import { galleryImages, uitImages, udaipurImages, festivalImages, parkImages, surgicalImages, foundationImages, supportImages, jalImages, placeImages, campImages, helpImages, functionImages, communityImages } from "./data";
 import logo from '../src/logo.webp';
 import udaipur from '../src/sheisudaipur.webp';
+
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -36,7 +37,18 @@ AOS.init({
 
 
 function App() {
+  const [showSelectImageModal, setShowSelectImageModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleCloseModal = () => {
+    setShowSelectImageModal(false);
+    setSelectedImage(null);
+    // Remove the selected image URL from localStorage
+    localStorage.removeItem("selectedImage");
+  };
+
   return (
+
     <div className="App">
       <div className="bg-cover bg-center relative text-justify py-16 flex flex-col justify-center">
         <img src={logo} alt="Logo" className="logo-image w-80 h-38 mx-auto my-8 mt-6" />
@@ -79,9 +91,13 @@ function App() {
               </p>
             )}
             {/* Check if images is defined before rendering */}
+
             {section.images && (
               <div data-aos="fade-up">
-                <Component images={galleryImages} />
+
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={galleryImages} />
+
+
               </div>
             )}
 
@@ -113,7 +129,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images1 && (
               <div data-aos="fade-up">
-                <Component images={uitImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={uitImages} />
               </div>
             )}
           </div>
@@ -128,14 +144,14 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images2 && (
               <div data-aos="fade-up">
-                <Component images={parkImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={parkImages} />
               </div>
             )}
           </div>
         ))}
       </div>
 
-      <div className="max-w-full bg-[#f7f7f7]">
+      <div className="max-w-full bg-[#f7f7f7] sm:block">
         <div className="p-8 mx-auto max-w-3/4 md:flex sm:block">
           <img src={udaipur} alt="udaipur" className='udaipur-image h-60 m-2 mx-3' />
           {data.map((section, index) => (
@@ -152,7 +168,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images3 && (
                 <div data-aos="fade-up">
-                  <Component images={udaipurImages} className="images3" />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={udaipurImages} className="images3" />
                 </div>
               )}
             </div>
@@ -175,7 +191,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images4 && (
               <div data-aos="fade-up">
-                <Component images={jalImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={jalImages} />
               </div>
             )}
           </div>
@@ -210,7 +226,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images5 && (
                 <div data-aos="fade-up">
-                  <Component images={campImages} />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={campImages} />
                 </div>
               )}
             </div>
@@ -246,7 +262,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images6 && (
               <div data-aos="fade-up">
-                <Component images={helpImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={helpImages} />
               </div>
             )}
           </div>
@@ -281,7 +297,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images7 && (
                 <div data-aos="fade-up">
-                  <Component images={functionImages} />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={functionImages} />
                 </div>
               )}
             </div>
@@ -346,7 +362,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images8 && (
                 <div data-aos="fade-up">
-                  <Component images={communityImages} />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={communityImages} />
                 </div>
               )}
             </div>
@@ -380,7 +396,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images9 && (
               <div data-aos="fade-up">
-                <Component images={placeImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={placeImages} />
               </div>
             )}
           </div>
@@ -414,7 +430,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images10 && (
                 <div data-aos="fade-up">
-                  <Component images={foundationImages} />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={foundationImages} />
                 </div>
               )}
             </div>
@@ -450,7 +466,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images11 && (
               <div data-aos="fade-up">
-                <Component images={supportImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={supportImages} />
               </div>
             )}
           </div>
@@ -484,7 +500,7 @@ function App() {
               {/* Check if images is defined before rendering */}
               {section.images12 && (
                 <div data-aos="fade-up">
-                  <Component images={surgicalImages} />
+                  <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={surgicalImages} />
                 </div>
               )}
             </div>
@@ -582,7 +598,7 @@ function App() {
             {/* Check if images is defined before rendering */}
             {section.images13 && (
               <div data-aos="fade-up">
-                <Component images={festivalImages} />
+                <Component setSelectedImage={setSelectedImage} setShowSelectImageModal={setShowSelectImageModal} images={festivalImages} />
               </div>
             )}
           </div>
@@ -590,13 +606,30 @@ function App() {
 
       </div>
 
-
       <div className='footer max-h-full py-2 bg-[#d83e18]'>
         <p className="text-base text-center"> Copyright © 2023. All rights reserved</p>
       </div>
-    </div >
-  );
 
+
+      {selectedImage && <div className="modal fixed inset-0 flex items-center justify-center z-10">
+        <div className="modal-overlay fixed inset-0 bg-black opacity-50"></div>
+        <div className="modal-container mx-auto rounded-lg p-4 md:p-8 overflow-hidden shadow-lg z-50">
+          <span
+            className="close-button absolute top-0 right-0 px-4 py-2 text-xl cursor-pointer"
+            onClick={handleCloseModal}
+          >
+            &times;
+          </span>
+          <img
+            src={selectedImage}
+            alt="Full Screen"
+            className="full-screen-image max-h-screen mx-auto"
+          />
+        </div>
+      </div>}
+    </div >
+
+  );
 }
 
 export default App;
