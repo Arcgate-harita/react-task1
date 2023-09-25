@@ -93,9 +93,7 @@ const Component = ({ setSelectedImage, setShowSelectImageModal, images }) => {
     }`}
     onClick={() => handleImageClick(image)} // Pass the image URL to the function
   />
-
-
-          </div>
+     </div>
         ))}
       </div>
       {showScrollButtons && (
